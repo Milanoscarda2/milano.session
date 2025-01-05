@@ -8,7 +8,7 @@ const fs = require('fs');
 let router = express.Router()
 const pino = require("pino");
 const {
-	default: Malvin_King,
+	default: milano,
 	useMultiFileAuthState,
 	jidNormalizedUser,
 	Browsers,
@@ -28,13 +28,13 @@ const {
 } = require("node:fs/promises")
 router.get('/', async (req, res) => {
 	const id = makeid();
-	async function MALVIN_KING_QR_CODE() {
+	async function Milaio_QR_CODE() {
 		const {
 			state,
 			saveCreds
 		} = await useMultiFileAuthState('./temp/' + id)
 		try {
-			let Qr_Code_By_Malvin_King = Malvin_King({
+			let Qr_Code_By_Milano = Milano({
 				auth: state,
 				printQRInTerminal: false,
 				logger: pino({
@@ -43,8 +43,8 @@ router.get('/', async (req, res) => {
 				browser: Browsers.macOS("Desktop"),
 			});
 
-			Qr_Code_By_Malvin_King.ev.on('creds.update', saveCreds)
-			Qr_Code_By_Malvin_King.ev.on("connection.update", async (s) => {
+			Qr_Code_By_milano.ev.on('creds.update', saveCreds)
+			Qr_Code_By_Milano.ev.on("connection.update", async (s) => {
 				const {
 					connection,
 					lastDisconnect,
@@ -56,32 +56,32 @@ router.get('/', async (req, res) => {
 					let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
 					await delay(800);
 				   let b64data = Buffer.from(data).toString('base64');
-				   let session = await Qr_Code_By_Malvin_King.sendMessage(Qr_Code_By_Malvin_King.user.id, { text: '' + b64data });
+				   let session = await Qr_Code_By_MILANOSCARDA.sendMessage(Qr_Code_By_MILANO.user.id, { text: '' + b64data });
 	
-				   let MALVIN_KING_TEXT = `
+				   let MILANOSCARDA = `
 ┏━━━━━━━━━━━━━━
 ┃ᴍᴀʟᴠɪɴ-ᴍᴅ SESSION IS 
 ┃SUCCESSFULLY
 ┃CONNECTED ✅🔥
 ┗━━━━━━━━━━━━━━━
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-❶ || Creator = 𖥘⚡ ᴍᴀʟᴠɪɴ-ᴋɪɴɢ ⚡𖥘
+❶ || Creator = 𖥘⚡ MILANOSCARDA ⚡𖥘
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-❷ || https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z
+❷ || https://whatsapp.com/channel/0029VasEuWcKgsNq2vvRLl25
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-❸ || Owner = https://wa.me/263780166288
+❸ || Owner = https://wa.me/message/2CBDKWR5YS6FD1
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-❺ || Bot Repo = https://github.com/kingmalvn/RAVENS-MD
+❺ || Bot Repo =
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-❻ || YouTube = https://www.youtube.com/@MalvinKing_TECH 
+❻ || YouTube = https://www.youtube.com/@MILANOSCARDA
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ©2024-2099 ᴍᴀʟᴠɪɴ-ᴋɪɴɢ_`
-	 await Qr_Code_By_Malvin_King.sendMessage(Qr_Code_By_Malvin_King.user.id,{text:MALVIN_KING_TEXT},{quoted:session})
+	 await Qr_Code_By_MILANOSCARDA.sendMessage(Qr_Code_By_MILANOSCARDA.user.id,{text: MILANOSCARDA_TEXT},{quoted:session})
 
 
 
 					await delay(100);
-					await Qr_Code_By_Malvin_King.ws.close();
+					await Qr_Code_By_Malvin_Kin.ws.close();
 					return await removeFile("temp/" + id);
 				} else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
 					await delay(10000);
